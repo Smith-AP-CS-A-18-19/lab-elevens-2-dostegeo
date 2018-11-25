@@ -8,10 +8,12 @@ import java.util.ArrayList;
  */
 public class Deck {
 
+
 	/**
 	 * cards contains all the cards in the deck.
 	 */
-	private Card[] cards;
+	private List<Card> cards;
+
 
 	/**
 	 * size is the number of not-yet-dealt cards.
@@ -31,28 +33,30 @@ public class Deck {
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		cards = new Card[ranks.length * suits.length];
+		size = cards.length;
 		int rankIndex = 0;
 		int suitIndex = 0;
-		for (int i = 0; i < cards.length; i++) {
+		int valueIndex = 0;
+		for (int i = 0; i < cards.length; i ++) {
 			Card card = new Card(ranks[rankIndex], suits[suitIndex], values[rankIndex]);
 			cards[i] = card;
 			rankIndex = (rankIndex + 1) % ranks.length;
-			if (rankIndex == 0) {
-				suitIndex++;
-			}
+			// This says if it is equal, then it will be set back to zero.
+				if (rankIndex == 0) {
+					suitIndex++;
+				}
 		}
 	}
-
 
 	/**
 	 * Determines if this deck is empty (no undealt cards).
 	 * @return true if this deck is empty, false otherwise.
 	 */
+	/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 	public boolean isEmpty() {
 		if (size == 0) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
@@ -61,6 +65,7 @@ public class Deck {
 	 * Accesses the number of undealt cards in this deck.
 	 * @return the number of undealt cards in this deck.
 	 */
+	 /* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 	public int size() {
 		return size;
 	}
@@ -69,23 +74,23 @@ public class Deck {
 	 * Randomly permute the given collection of cards
 	 * and reset the size to represent the entire deck.
 	 */
-	public void shuffle() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
-	}
+	 /* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+	// public void shuffle() {
+	// 	for (int i = 0; i < card.length; i ++) {
+	// 		i = (int) (Math.random() * Deck.length);
+	// 		card[i] = i;
+	// 	}
+	// }
 
 	/**
 	 * Deals a card from this deck.
 	 * @return the card just dealt, or null if all the cards have been
 	 *         previously dealt.
 	 */
+	 /* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 	public Card deal() {
-		if (size > 0) {
-			size = size - 1;
-			Card cardReturned = cards[size];
-			return cardReturned;
-		} else {
-			return null;
-		}
+		size = size - 1;
+		return size;
 	}
 
 	/**
